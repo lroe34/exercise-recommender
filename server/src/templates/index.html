@@ -35,7 +35,7 @@
     }
     input[type=submit] {
         width: 100%;
-        background-color: #4CAF50;
+        background-color: rgb(0, 122, 255);
         color: white;
         padding: 12px 20px;
         margin-top: 20px;
@@ -130,7 +130,7 @@
 
         </div>
         <p>Recommended per week: {{ workout[1] }}</p>
-        <p>Muscle group: {{ workout[2]|join(', ') }}</p>
+        <p>{{ workout[2]|join(', ') }}</p>
     </div>
 {% endfor %}
 </div>

@@ -35,7 +35,7 @@ def process_form():
         full_recommendation = workouts[rec[0]]
         workout_name = full_recommendation.split(":")[0][1:].title().replace("{", " ")
         per_week = full_recommendation.split(":")[2].split(',')[0]
-        muscle_group = full_recommendation.split(":")[3].split(',')[:-1]
+        muscle_group = full_recommendation.split(":")[3].title().split(',')[:-1]
         difficulty = full_recommendation.split(":")[4].replace("difficulty:", "").replace("}", "")
         workout_details.append((workout_name, per_week, muscle_group, difficulty))
 
