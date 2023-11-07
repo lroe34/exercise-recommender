@@ -130,6 +130,7 @@
 <h1>Recommended Workouts</h1>
 <div class="workout-div">
     {% for workout in recommended %}
+
     <div class="workout">
         <div class="title">
             <h2>{{ workout[0] }}</h2>
@@ -139,6 +140,8 @@
 
         </div>
         <p>Recommended per week: {{ workout[1] }}</p>
+        <p>{{workout[4]}}</p>
+
         <p>{{ workout[2]|join(', ') }}</p>
     </div>
 {% endfor %}
