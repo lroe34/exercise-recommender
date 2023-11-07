@@ -12,7 +12,8 @@ def home():
 def process_form():
     muscle_group = request.form.get('muscleGroup')
     skill_level = request.form.get('skillLevel')
-    user_profile = "{recommendedperweek:2-3,musclegroup:" + f"{muscle_group}" + ",difficulty:" f"{skill_level}"+ "}"
+    goal = request.form.get('goal')
+    user_profile = f'{{"recommendedperweek": "2-3", "musclegroup": "{muscle_group}", "difficulty": "{skill_level}", "goal": "{goal}"}}'
     # Process the form data here
     # read from the txt file
     with open('ex.txt', 'r') as file:
