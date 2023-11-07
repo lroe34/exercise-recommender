@@ -2,7 +2,98 @@
 <html>
 <head>
     <title>Exercise Recommender</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 </head>
+<style>
+    body {
+        background-color: #f2f2f2;
+    }
+    form {
+        background-color: #ffffff;
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+    label {
+        font-size: 20px;
+        font-family: 'Roboto Slab', serif;
+    }
+    h1, h2 {
+        font-family: 'Roboto Slab', serif;
+        text-align: center;
+    }
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+    p {
+        text-align: center;
+    }
+    .workout-div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .workout{
+
+        background-color: #ffffff;
+        width: 30%;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+    .tag {
+        color: white;
+        padding: 1px 10px;
+        line-height: 3px;
+        margin: 5px;
+        margin-top: 0; /* Adjust this value as needed */
+        border-radius: 50px;
+        display: inline-block;
+        font-size: 12px;
+    }
+    .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: auto; /* Adjust this value as needed */
+    }
+    .beginner{
+        background-color: #4caf4f3f;
+        color:#4caf4f;
+
+    }
+    .intermediate{
+        background-color: #ff98003f;
+        color:#ff9800;
+    }
+    .advanced{
+        background-color: #f443363f;
+        color:#f44336;
+    }
+</style>
 <body>
 
     <form action="/process_form" method="post">
@@ -14,9 +105,10 @@
         <option value="biceps">Biceps</option>
         <option value="triceps">Triceps</option>
         <option value="forearms">Forearms</option>
-        <option value="core">Core</option>
         <option value="back">Back</option>
-        <option value="shoulders">Shoulders</option>
+        <option value="glutes">Glutes</option>
+        <option value="calves">Calves</option>
+        <option value="quadriceps">Quadriceps</option>
     </select><br>
     <label for="skillLevel">Skill Level:</label><br>
     <select id="skillLevel" name="skillLevel">
@@ -26,6 +118,21 @@
     </select><br>
     <input type="submit" value="Submit">
 </form>
-<p>recommended: {{ recommended }}</p>
+<h1>Recommended Workouts</h1>
+<div class="workout-div">
+    {% for workout in recommended %}
+    <div class="workout">
+        <div class="title">
+            <h2>{{ workout[0] }}</h2>
+            <div class="tag {{ workout[3] }}">
+                <p>{{ workout[3] }}</p>
+            </div>
+
+        </div>
+        <p>Recommended per week: {{ workout[1] }}</p>
+        <p>Muscle group: {{ workout[2]|join(', ') }}</p>
+    </div>
+{% endfor %}
+</div>
 </body>
 </html>
